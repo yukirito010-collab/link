@@ -5,33 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abriendo DramAsia...</title>
     
-    <!-- CONFIGURACIÓN PARA ANDROID -->
-    <meta property="al:android:url" content="snssdk1128://user/profile/7566838679873766422">
-    <meta property="al:android:package" content="com.zhiliaoapp.musically">
-    <meta property="al:android:app_name" content="TikTok">
-    
-    <!-- CONFIGURACIÓN PARA IOS (IPHONE) -->
-    <meta property="al:ios:url" content="tiktok://user?username=dramasia1">
-    <meta property="al:ios:app_store_id" content="1235601247">
-    <meta property="al:ios:app_name" content="TikTok">
-    
     <script type="text/javascript">
         window.onload = function() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var linkWebTikTok = "https://www.tiktok.com/@dramasia1";
+            var idNumerico = "TU_ID_NUMERICO"; // Reemplaza esto con tu número largo de TikTok
+            var username = "dramasia1";
             
-            // 1. Detección para iPhones / iPads
+            var linkWebTikTok = "https://www.tiktok.com/@" + username;
+            // Este es el comando "Intent" que rompe el bloqueo de Facebook en Android
+            var androidIntent = "intent://user/profile/" + idNumerico + "#Intent;scheme=snssdk1128;package=com.zhiliaoapp.musically;S.browser_fallback_url=" + encodeURIComponent(linkWebTikTok) + ";end";
+            var iosScheme = "tiktok://user?username=" + username;
+
+            var boton = document.getElementById("btn-tiktok");
+
+            // 1. Si el usuario usa iPhone
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location = "tiktok://user?username=dramasia1";
-                setTimeout(function() { window.location = linkWebTikTok; }, 2000);
+                boton.href = iosScheme;
+                window.location = iosScheme;
+                setTimeout(function() { window.location = linkWebTikTok; }, 3000);
             } 
-            // 2. Detección para Android
+            // 2. Si el usuario usa Android (Tu caso actual)
             else if (/android/i.test(userAgent)) {
-                window.location = "snssdk1128://user/profile/7566838679873766422";
-                setTimeout(function() { window.location = linkWebTikTok; }, 2000);
+                boton.href = androidIntent;
+                // Intentamos abrirlo automático
+                window.location = androidIntent;
+                // Si Facebook bloquea el automático, el usuario usará el botón rojo que ya tiene el Intent asignado
+                setTimeout(function() { 
+                    // Dejamos que el usuario presione el botón si no redirigió solo
+                }, 3000);
             } 
             // 3. Si entran desde PC
             else {
+                boton.href = linkWebTikTok;
                 window.location = linkWebTikTok;
             }
         }
@@ -40,9 +45,10 @@
 <body style="background-color: #121212; color: #ffffff; text-align: center; font-family: sans-serif; margin-top: 100px;">
     <div style="max-width: 400px; margin: 0 auto; padding: 20px;">
         <p style="font-size: 18px; font-weight: 500;">Redirigiéndote a la aplicación...</p>
-        <p style="font-size: 14px; color: #aaa;">Si la aplicación no se abre automáticamente, toca el botón de abajo:</p>
+        <p style="font-size: 14px; color: #aaa;">Si la aplicación no se abre automáticamente, toca el botón de abajo para ir directo:</p>
         <br>
-        <a href="https://www.tiktok.com/@dramasia1" style="background-color: #fe2c55; color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 10px rgba(254, 44, 85, 0.3);">
+        <!-- El botón ahora tiene una ID única para recibir el comando dinámico -->
+        <a id="btn-tiktok" href="https://www.tiktok.com/@dramasia1" style="background-color: #fe2c55; color: white; padding: 14px 28px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 10px rgba(254, 44, 85, 0.3); font-size: 16px;">
             Ir a TikTok
         </a>
     </div>
