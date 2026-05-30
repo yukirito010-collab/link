@@ -7,37 +7,26 @@
     
     <script type="text/javascript">
         window.onload = function() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var idNumerico = "7566838679873766422"; // Reemplaza esto con tu número largo de TikTok
             var username = "dramasia1";
+            var linkWeb = "https://www.tiktok.com/@" + username;
+            // Enlace universal que entienden tanto Android como iPhone
+            var deepLink = "tiktok://user?username=" + username;
             
-            var linkWebTikTok = "https://www.tiktok.com/@" + username;
-            // Este es el comando "Intent" que rompe el bloqueo de Facebook en Android
-            var androidIntent = "intent://user/profile/" + idNumerico + "#Intent;scheme=snssdk1128;package=com.zhiliaoapp.musically;S.browser_fallback_url=" + encodeURIComponent(linkWebTikTok) + ";end";
-            var iosScheme = "tiktok://user?username=" + username;
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var isFacebook = /FBAV|FBAN/i.test(userAgent);
+            var isAndroid = /android/i.test(userAgent);
 
             var boton = document.getElementById("btn-tiktok");
+            
+            // Configuramos el botón rojo con el enlace directo a la app
+            boton.href = deepLink;
 
-            // 1. Si el usuario usa iPhone
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                boton.href = iosScheme;
-                window.location = iosScheme;
-                setTimeout(function() { window.location = linkWebTikTok; }, 3000);
-            } 
-            // 2. Si el usuario usa Android (Tu caso actual)
-            else if (/android/i.test(userAgent)) {
-                boton.href = androidIntent;
-                // Intentamos abrirlo automático
-                window.location = androidIntent;
-                // Si Facebook bloquea el automático, el usuario usará el botón rojo que ya tiene el Intent asignado
-                setTimeout(function() { 
-                    // Dejamos que el usuario presione el botón si no redirigió solo
-                }, 3000);
-            } 
-            // 3. Si entran desde PC
-            else {
-                boton.href = linkWebTikTok;
-                window.location = linkWebTikTok;
+            // Intentamos la apertura automática solo si NO es el navegador de Facebook
+            // porque Facebook bloquea las redirecciones automáticas y causa el error que viste.
+            if (!isFacebook) {
+                window.location = deepLink;
+                // Si en 2 segundos no abrió la app, lo manda a la web
+                setTimeout(function() { window.location = linkWeb; }, 2000);
             }
         }
     </script>
@@ -45,10 +34,9 @@
 <body style="background-color: #121212; color: #ffffff; text-align: center; font-family: sans-serif; margin-top: 100px;">
     <div style="max-width: 400px; margin: 0 auto; padding: 20px;">
         <p style="font-size: 18px; font-weight: 500;">Redirigiéndote a la aplicación...</p>
-        <p style="font-size: 14px; color: #aaa;">Si la aplicación no se abre automáticamente, toca el botón de abajo para ir directo:</p>
+        <p style="font-size: 14px; color: #aaa;">Si la aplicación no se abre sola, toca el botón rojo de abajo para entrar directo:</p>
         <br>
-        <!-- El botón ahora tiene una ID única para recibir el comando dinámico -->
-        <a id="btn-tiktok" href="https://www.tiktok.com/@dramasia1" style="background-color: #fe2c55; color: white; padding: 14px 28px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 10px rgba(254, 44, 85, 0.3); font-size: 16px;">
+        <a id="btn-tiktok" href="https://www.tiktok.com/@dramasia1" style="background-color: #fe2c55; color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.4); font-size: 18px;">
             Ir a TikTok
         </a>
     </div>
