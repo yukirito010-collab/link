@@ -1,64 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Abrir TikTok</title>
-
-<script>
-function abrirTikTok() {
-
-    var ua = navigator.userAgent || "";
-
-    if (/Android/i.test(ua)) {
-
-        window.location.href =
-        "intent://user/profile/7566838679873766422#Intent;scheme=snssdk1128;package=com.zhiliaoapp.musically;end";
-
-        setTimeout(function() {
-            window.location.href = "https://www.tiktok.com/@dramasia1";
-        }, 1500);
-
-    } else {
-
-        window.location.href = "tiktok://user?username=dramasia1";
-
-        setTimeout(function() {
-            window.location.href = "https://www.tiktok.com/@dramasia1";
-        }, 1500);
-    }
-}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ver video completo</title>
 
 <style>
 body{
-background:#111;
-color:white;
-font-family:Arial;
-text-align:center;
-padding-top:100px;
+    background:#121212;
+    color:#fff;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    margin:0;
+    padding:40px 20px;
 }
 
-button{
-background:#fe2c55;
-color:white;
-border:none;
-padding:18px 35px;
-border-radius:30px;
-font-size:20px;
-font-weight:bold;
+.container{
+    max-width:500px;
+    margin:auto;
+    margin-top:80px;
+}
+
+h1{
+    font-size:28px;
+}
+
+p{
+    color:#ccc;
+    line-height:1.6;
+}
+
+.btn{
+    display:inline-block;
+    background:#FE2C55;
+    color:#fff;
+    text-decoration:none;
+    padding:16px 30px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.small{
+    margin-top:30px;
+    font-size:13px;
+    color:#888;
 }
 </style>
+
+<script>
+
+function abrirChrome() {
+
+    var tiktokUrl = "https://www.tiktok.com/@dramasia1";
+
+    try {
+
+        window.location.href =
+        "intent://" +
+        tiktokUrl.replace("https://","") +
+        "#Intent;scheme=https;package=com.android.chrome;end";
+
+    } catch(e) {}
+
+    setTimeout(function() {
+
+        document.getElementById("manual").style.display = "block";
+
+    }, 2000);
+}
+
+window.onload = function() {
+
+    setTimeout(function() {
+        abrirChrome();
+    }, 500);
+
+};
+
+</script>
 
 </head>
 <body>
 
-<h2>Abrir TikTok</h2>
+<div class="container">
 
-<button onclick="abrirTikTok()">
-ABRIR TIKTOK
-</button>
+    <h1>🎬 Ver video completo</h1>
+
+    <p>
+        Intentando abrir tu navegador...
+    </p>
+
+    <div id="manual" style="display:none;">
+
+        <p>
+            Si no se abrió automáticamente, pulsa el botón:
+        </p>
+
+        <a class="btn"
+           href="intent://www.tiktok.com/@dramasia1#Intent;scheme=https;package=com.android.chrome;end">
+            ABRIR EN CHROME
+        </a>
+
+        <br><br>
+
+        <a class="btn"
+           href="https://www.tiktok.com/@dramasia1">
+            ABRIR TIKTOK WEB
+        </a>
+
+    </div>
+
+    <div class="small">
+        TikTok: @dramasia1
+    </div>
+
+</div>
 
 </body>
 </html>
