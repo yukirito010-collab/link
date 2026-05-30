@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abriendo DramAsia...</title>
+    
+    <!-- CONFIGURACIÓN PARA ANDROID -->
+    <meta property="al:android:url" content="snssdk1128://user/profile/7566838679873766422">
+    <meta property="al:android:package" content="com.zhiliaoapp.musically">
+    <meta property="al:android:app_name" content="TikTok">
+    
+    <!-- CONFIGURACIÓN PARA IOS (IPHONE) -->
+    <meta property="al:ios:url" content="tiktok://user?username=dramasia1">
+    <meta property="al:ios:app_store_id" content="1235601247">
+    <meta property="al:ios:app_name" content="TikTok">
+    
+    <script type="text/javascript">
+        window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var linkWebTikTok = "https://www.tiktok.com/@dramasia1";
+            
+            // 1. Detección para iPhones / iPads
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location = "tiktok://user?username=dramasia1";
+                setTimeout(function() { window.location = linkWebTikTok; }, 2000);
+            } 
+            // 2. Detección para Android
+            else if (/android/i.test(userAgent)) {
+                window.location = "snssdk1128://user/profile/7566838679873766422";
+                setTimeout(function() { window.location = linkWebTikTok; }, 2000);
+            } 
+            // 3. Si entran desde PC
+            else {
+                window.location = linkWebTikTok;
+            }
+        }
+    </script>
+</head>
+<body style="background-color: #121212; color: #ffffff; text-align: center; font-family: sans-serif; margin-top: 100px;">
+    <div style="max-width: 400px; margin: 0 auto; padding: 20px;">
+        <p style="font-size: 18px; font-weight: 500;">Redirigiéndote a la aplicación...</p>
+        <p style="font-size: 14px; color: #aaa;">Si la aplicación no se abre automáticamente, toca el botón de abajo:</p>
+        <br>
+        <a href="https://www.tiktok.com/@dramasia1" style="background-color: #fe2c55; color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 10px rgba(254, 44, 85, 0.3);">
+            Ir a TikTok
+        </a>
+    </div>
+</body>
+</html>
