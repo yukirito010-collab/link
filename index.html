@@ -1,27 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DramAsia</title>
-</head>
-<body style="background-color: #121212; color: #ffffff; text-align: center; font-family: sans-serif; margin-top: 50px; padding: 20px;">
-    <div style="max-width: 400px; margin: 0 auto; border: 1px solid #222; padding: 30px; border-radius: 15px; background-color: #1a1a1a;">
-        
-        <h2 style="color: #fe2c55; margin-bottom: 5px;">🎬 ¡Paso Final para ver el Drama!</h2>
-        <p style="font-size: 14px; color: #aaa; margin-bottom: 30px;">Facebook bloquea el acceso directo a la aplicación de TikTok. Sigue estos 2 pasos rápidos:</p>
-        
-        <div style="text-align: left; background-color: #252525; padding: 15px; border-radius: 10px; margin-bottom: 25px; border-left: 5px solid #fe2c55;">
-            <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 16px;">1. Toca los <span style="color: #fe2c55;">3 PUNTOS (⋮)</span> arriba a la derecha.</p>
-            <p style="margin: 0; font-weight: bold; font-size: 16px;">2. Selecciona <span style="color: #fe2c55;">"Abrir en el navegador"</span>.</p>
-        </div>
+    <title>Abriendo TikTok...</title>
 
-        <p style="font-size: 13px; color: #888;">¡Y listo! Eso abrirá tu aplicación de TikTok directamente en nuestro perfil.</p>
-        
-        <br><hr style="border: 0; border-top: 1px solid #333;"><br>
-        
-        <p style="font-size: 12px; color: #555;">Si estás desde una PC, puedes usar el enlace normal:</p>
-        <a href="https://www.tiktok.com/@dramasia1" style="color: #fe2c55; font-weight: bold; text-decoration: none; font-size: 14px;">Ir a la versión Web →</a>
-    </div>
+    <meta property="al:android:url" content="snssdk1128://user/profile/7566838679873766422">
+    <meta property="al:android:package" content="com.zhiliaoapp.musically">
+
+    <meta property="al:ios:url" content="tiktok://user?username=dramasia1">
+    <meta property="al:ios:app_store_id" content="1235601247">
+    <meta property="al:ios:app_name" content="TikTok">
+
+    <script>
+        function openTikTok() {
+
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (isAndroid) {
+
+                window.location.href =
+                    "intent://user/profile/7566838679873766422#Intent;scheme=snssdk1128;package=com.zhiliaoapp.musically;end";
+
+                setTimeout(function () {
+                    window.location.href = "https://www.tiktok.com/@dramasia1";
+                }, 2000);
+
+            } else if (isIOS) {
+
+                window.location.href =
+                    "tiktok://user?username=dramasia1";
+
+                setTimeout(function () {
+                    window.location.href = "https://www.tiktok.com/@dramasia1";
+                }, 2000);
+
+            } else {
+
+                window.location.href = "https://www.tiktok.com/@dramasia1";
+            }
+        }
+
+        window.onload = function () {
+            setTimeout(openTikTok, 300);
+        };
+    </script>
+</head>
+
+<body style="
+    background:#121212;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    padding-top:100px;
+">
+
+    <h2>Abriendo TikTok...</h2>
+
+    <p>
+        Si TikTok no se abre automáticamente,
+        pulsa el botón:
+    </p>
+
+    <button
+        onclick="openTikTok()"
+        style="
+            background:#FE2C55;
+            color:white;
+            border:none;
+            border-radius:25px;
+            padding:15px 30px;
+            font-size:18px;
+            cursor:pointer;
+        ">
+        Abrir TikTok
+    </button>
+
 </body>
 </html>
