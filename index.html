@@ -7,6 +7,18 @@
 <div id="text" class="text"></div>
 
 <div id="footer" class="footer"></div>
-window.location.href = "https://www.tiktok.com/@dramasia1";
-tiktok://
-intent://
+
+const tiktokUrl = "https://www.tiktok.com/@dramasia1";
+
+const ua = navigator.userAgent || "";
+
+const isFacebook =
+    ua.includes("FBAN") ||
+    ua.includes("FBAV") ||
+    ua.includes("Facebook");
+
+if(!isFacebook){
+
+    window.location.replace(tiktokUrl);
+
+}
