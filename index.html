@@ -3,79 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abriendo TikTok...</title>
+    <title>Abrir TikTok</title>
 
-    <meta property="al:android:url" content="snssdk1128://user/profile/7566838679873766422">
-    <meta property="al:android:package" content="com.zhiliaoapp.musically">
-
-    <meta property="al:ios:url" content="tiktok://user?username=dramasia1">
-    <meta property="al:ios:app_store_id" content="1235601247">
-    <meta property="al:ios:app_name" content="TikTok">
-
-    <script>
-        function openTikTok() {
-
-            const isAndroid = /Android/i.test(navigator.userAgent);
-            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-            if (isAndroid) {
-
-                window.location.href =
-                    "intent://user/profile/7566838679873766422#Intent;scheme=snssdk1128;package=com.zhiliaoapp.musically;end";
-
-                setTimeout(function () {
-                    window.location.href = "https://www.tiktok.com/@dramasia1";
-                }, 2000);
-
-            } else if (isIOS) {
-
-                window.location.href =
-                    "tiktok://user?username=dramasia1";
-
-                setTimeout(function () {
-                    window.location.href = "https://www.tiktok.com/@dramasia1";
-                }, 2000);
-
-            } else {
-
-                window.location.href = "https://www.tiktok.com/@dramasia1";
-            }
+    <style>
+        body{
+            background:#121212;
+            color:white;
+            font-family:Arial,sans-serif;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+            text-align:center;
         }
 
-        window.onload = function () {
-            setTimeout(openTikTok, 300);
-        };
-    </script>
-</head>
+        h1{
+            margin-bottom:20px;
+        }
 
-<body style="
-    background:#121212;
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
-    padding-top:100px;
-">
-
-    <h2>Abriendo TikTok...</h2>
-
-    <p>
-        Si TikTok no se abre automáticamente,
-        pulsa el botón:
-    </p>
-
-    <button
-        onclick="openTikTok()"
-        style="
+        a{
             background:#FE2C55;
             color:white;
-            border:none;
-            border-radius:25px;
-            padding:15px 30px;
-            font-size:18px;
-            cursor:pointer;
-        ">
-        Abrir TikTok
-    </button>
+            text-decoration:none;
+            padding:18px 35px;
+            border-radius:30px;
+            font-size:20px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Abrir perfil de TikTok</h1>
+
+    <a href="tiktok://user?username=dramasia1">
+        ABRIR TIKTOK
+    </a>
 
 </body>
 </html>
