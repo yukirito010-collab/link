@@ -3,42 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abriendo DramAsia...</title>
-    
-    <script type="text/javascript">
-        window.onload = function() {
-            var username = "dramasia1";
-            var linkWeb = "https://www.tiktok.com/@" + username;
-            // Enlace universal que entienden tanto Android como iPhone
-            var deepLink = "tiktok://user?username=" + username;
-            
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var isFacebook = /FBAV|FBAN/i.test(userAgent);
-            var isAndroid = /android/i.test(userAgent);
-
-            var boton = document.getElementById("btn-tiktok");
-            
-            // Configuramos el botón rojo con el enlace directo a la app
-            boton.href = deepLink;
-
-            // Intentamos la apertura automática solo si NO es el navegador de Facebook
-            // porque Facebook bloquea las redirecciones automáticas y causa el error que viste.
-            if (!isFacebook) {
-                window.location = deepLink;
-                // Si en 2 segundos no abrió la app, lo manda a la web
-                setTimeout(function() { window.location = linkWeb; }, 2000);
-            }
-        }
-    </script>
+    <title>DramAsia</title>
 </head>
-<body style="background-color: #121212; color: #ffffff; text-align: center; font-family: sans-serif; margin-top: 100px;">
-    <div style="max-width: 400px; margin: 0 auto; padding: 20px;">
-        <p style="font-size: 18px; font-weight: 500;">Redirigiéndote a la aplicación...</p>
-        <p style="font-size: 14px; color: #aaa;">Si la aplicación no se abre sola, toca el botón rojo de abajo para entrar directo:</p>
-        <br>
-        <a id="btn-tiktok" href="https://www.tiktok.com/@dramasia1" style="background-color: #fe2c55; color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 15px rgba(254, 44, 85, 0.4); font-size: 18px;">
-            Ir a TikTok
-        </a>
+<body style="background-color: #121212; color: #ffffff; text-align: center; font-family: sans-serif; margin-top: 50px; padding: 20px;">
+    <div style="max-width: 400px; margin: 0 auto; border: 1px solid #222; padding: 30px; border-radius: 15px; background-color: #1a1a1a;">
+        
+        <h2 style="color: #fe2c55; margin-bottom: 5px;">🎬 ¡Paso Final para ver el Drama!</h2>
+        <p style="font-size: 14px; color: #aaa; margin-bottom: 30px;">Facebook bloquea el acceso directo a la aplicación de TikTok. Sigue estos 2 pasos rápidos:</p>
+        
+        <div style="text-align: left; background-color: #252525; padding: 15px; border-radius: 10px; margin-bottom: 25px; border-left: 5px solid #fe2c55;">
+            <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 16px;">1. Toca los <span style="color: #fe2c55;">3 PUNTOS (⋮)</span> arriba a la derecha.</p>
+            <p style="margin: 0; font-weight: bold; font-size: 16px;">2. Selecciona <span style="color: #fe2c55;">"Abrir en el navegador"</span>.</p>
+        </div>
+
+        <p style="font-size: 13px; color: #888;">¡Y listo! Eso abrirá tu aplicación de TikTok directamente en nuestro perfil.</p>
+        
+        <br><hr style="border: 0; border-top: 1px solid #333;"><br>
+        
+        <p style="font-size: 12px; color: #555;">Si estás desde una PC, puedes usar el enlace normal:</p>
+        <a href="https://www.tiktok.com/@dramasia1" style="color: #fe2c55; font-weight: bold; text-decoration: none; font-size: 14px;">Ir a la versión Web →</a>
     </div>
 </body>
 </html>
